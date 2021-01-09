@@ -60,6 +60,17 @@ app.get("/work", function(req, res){
     res.render('list', {listTitle: "Work List", newListItems: workItems, pageCheck: pageCheck});
 });
 
+app.get("/clear", function(req, res){
+    if (pageCheck === "Work"){
+        workItems = [];
+        res.redirect("/work");
+    }
+    else if (pageCheck === "notWork"){
+        items = [];
+        res.redirect("/");
+    }
+})
+
 app.listen(process.env.PORT || 3000, function(){
     console.log('Server listening on port 3000');
 });
